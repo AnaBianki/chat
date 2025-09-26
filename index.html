@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Filme & Série</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="chat-container">
+        <h1>🎬 CineChat 🎬</h1>
+<button id="theme-toggle">🌙</button>
+
+        <div id="conversation-display" class="conversation-display">
+            <div class="message bot-message">Bem-vindo(a) ao CineChat!</div>
+        </div>
+
+        <div id="choices-area" class="choices-area">
+            <!-- Botões de escolha aparecerão aqui -->
+        </div>
+
+        <div class="controls">
+            <button id="restart-button" class="action-button">Reiniciar Conversa</button>
+        </div>
+
+        <div id="message-box" class="modal">
+            <div class="modal-content">
+                <p id="message-text"></p>
+                <button id="close-message-btn" class="action-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

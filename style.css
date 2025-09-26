@@ -1,0 +1,310 @@
+/* --- Variáveis de cores --- */
+:root {
+    --primary-purple: #9b59b6;
+    --neon-purple: #d39aff;
+    --background-light: #ffffff;
+    --background-dark: #1a1a1a;
+    --text-light: #f0f0f0;
+    --text-dark: #1a1a1a;
+    --accent-color: #00ffea; /* neon detalhe */
+}
+
+/* --- Reset e body --- */
+/* --- Reset e body --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; /* GARANTE que não há margem externa */
+    padding: 0;
+    /* ... (outras propriedades mantidas) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+/* --- Container --- */
+/* --- Container --- */
+.chat-container {
+    background-color: rgba(30, 0, 50, 0.9);
+    border-radius: 15px;
+    /* Adicionamos uma borda de 1px com a cor neon-purple para criar a linha exata */
+    border: 1px solid var(--neon-purple); 
+    /* Ajustamos a sombra para ser mais um brilho do que a linha principal */
+    box-shadow: 0 0 15px rgba(155, 89, 182, 0.7); 
+    padding: 25px 30px;
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    transition: background-color 0.3s;
+}
+/* --- Header e toggle --- */
+h1 {
+    font-size: 2.2em;
+    color: var(--neon-purple);
+    margin: 0;
+    text-shadow: 0 0 8px var(--neon-purple);
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--neon-purple);
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 10px var(--neon-purple);
+    transition: background-color 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--primary-purple);
+}
+
+/* --- Conversa --- */
+.conversation-display {
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(0,0,0,0.3);
+    border: 1px solid var(--neon-purple);
+    transition: background-color 0.3s, border 0.3s;
+}
+
+/* Scrollbar estilizado */
+.conversation-display::-webkit-scrollbar {
+    width: 8px;
+}
+.conversation-display::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+.conversation-display::-webkit-scrollbar-thumb {
+    background: var(--neon-purple);
+    border-radius: 10px;
+}
+
+/* Mensagens */
+.message {
+    max-width: 75%;
+    padding: 12px 18px;
+    border-radius: 20px;
+    word-wrap: break-word;
+    font-size: 1em;
+    line-height: 1.3;
+    text-align: left;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.bot-message {
+    background-color: rgba(155, 89, 182, 0.9);
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    text-shadow: 0 0 5px #d39aff;
+}
+
+.user-message {
+    background-color: rgba(0, 255, 234, 0.85);
+    color: #1a1a1a;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    font-weight: bold;
+}
+
+/* --- Área de escolhas --- */
+.choices-area {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.choice-button, .action-button {
+    background-color: var(--neon-purple);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    box-shadow: 0 0 12px var(--neon-purple);
+    transition: all 0.2s ease;
+}
+
+.choice-button:hover, .action-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+.choice-button:active, .action-button:active {
+    transform: translateY(0);
+    box-shadow: 0 0 8px var(--neon-purple);
+}
+
+.action-button {
+    background-color: #ff007f;
+    margin-top: 15px;
+}
+
+/* --- Modal --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--background-light);
+    padding: 30px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 20px var(--neon-purple);
+}
+
+/* Links do chat */
+.message a {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* --- Tema escuro --- */
+body.dark {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+}
+
+body.dark .chat-container {
+    background-color: rgba(30,0,50,0.9);
+}
+
+body.dark .conversation-display {
+    background-color: rgba(0,0,0,0.3);
+}
+
+/* --- Tema claro --- */
+body.light {
+    background-color: var(--background-light);
+    color: var(--text-dark);
+}
+
+body.light .chat-container {
+    background-color: var(--background-light);
+}
+
+body.light .conversation-display {
+    background-color: #f4f4f8;
+}
+
+body.light .bot-message {
+    background-color: var(--primary-purple);
+    color: white;
+}
+
+body.light .user-message {
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+}
+
+body.light .choice-button, body.light .action-button {
+    background-color: var(--primary-purple);
+}
+/* --- Conversa --- */
+.conversation-display {
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+    /* Alterado o padding para 15px para garantir espaço nas laterais */
+    padding: 15px; 
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(0,0,0,0.3);
+    border: 1px solid var(--neon-purple);
+    transition: background-color 0.3s, border 0.3s;
+}
+
+/* Scrollbar estilizado (mantido) */
+.conversation-display::-webkit-scrollbar {
+    width: 8px;
+}
+.conversation-display::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+.conversation-display::-webkit-scrollbar-thumb {
+    background: var(--neon-purple);
+    border-radius: 10px;
+}
+
+/* Mensagens */
+.message {
+    max-width: 75%;
+    padding: 12px 18px;
+    border-radius: 20px;
+    word-wrap: break-word;
+    font-size: 1em;
+    line-height: 1.3;
+    text-align: left;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s, color 0.3s;
+    /* Adicionando box-sizing para garantir que padding e border não causem estouro */
+    box-sizing: border-box; 
+}
+
+.bot-message {
+    background-color: rgba(155, 89, 182, 0.9);
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    text-shadow: 0 0 5px #d39aff;
+}
+
+.user-message {
+    background-color: rgba(0, 255, 234, 0.85);
+    color: #1a1a1a;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    font-weight: bold;
+}
+/* --- GIF de fundo para todo o body --- */
+body {
+    position: relative; /* Permite que o GIF fique atrás do chat */
+    overflow: hidden;   /* Evita scroll indesejado */
+}
+
+#background-gif {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Preenche toda a tela sem distorcer */
+    z-index: -1;       /* Fica atrás de tudo */
+    pointer-events: none; /* Para não interferir em cliques */
+    transition: opacity 0.5s ease;
+}
